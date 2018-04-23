@@ -1,0 +1,48 @@
+#chat{
+    height: 250px;
+}
+
+.parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*  not necessary, just to visualize it */
+
+.parent {
+    height: 500px;
+    border: 1px solid black;
+    background-color: #333333;
+}
+
+
+.parent div {
+    border: 1px solid black;
+}
+
+#messages{
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.elem1{
+    background:white;
+    color:black;
+    width: 80%;
+    display:table-cell;
+
+}
+.elem2{
+    background:black;
+    color:#cef;
+    width: 20%;
+    display:table-cell;
+}
+.wrapElem{
+    background:dimgrey;
+    width: 100%;
+    display:table;
+    border-spacing:4px
+}
+

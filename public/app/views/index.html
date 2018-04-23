@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <!-- Base correction -->
+    <base href="/">
+
+    <!-- Meta Data -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="RGU CM4025 Enterprise Web Coursework">
+    <meta name="author" content="William Haynes">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Guild master mmorpg</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Custom styles for this template - we route public side already, so although it thinks it doesn't work, below link does-->
+    <link href="assets/css/cover.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/chat.css" rel="stylesheet" type="text/css">
+
+    <!-- Angular Calls -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-animate.js"></script>
+
+
+    <!-- Routing Calls -->
+    <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+
+    <!-- Controllers/Services -->
+    <script src="app/controllers/userCtrl.js"></script>
+    <script src="app/services/userServices.js"></script>
+    <script src="app/controllers/mainCtrl.js"></script>
+    <script src="app/services/authServices.js"></script>
+    <script src="app/controllers/adventurerCtrl.js"></script>
+    <script src="app/services/adventurerServices.js"></script>
+    <script src="app/controllers/guildCtrl.js"></script>
+    <script src="app/services/guildServices.js"></script>
+    <script src="app/controllers/leaderCtrl.js"></script>
+    <script src="app/services/leaderboardServices.js"></script>
+
+    <!-- chat requirements
+    <link href="../../../node_modules/rltm/web/rltm.js">
+    <link href="../../../node_modules/angular-chat/angular-chat.js">-->
+
+</head>
+
+<body class="text-center" ng-app="userApp" ng-controller="mainCtrl as main" ng-show="main.loadme" ng-cloak>
+
+<!-- ######OAuth for FBook Scripts#######
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '177534119692030',
+            xfbml      : true,
+            version    : 'v2.12'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>-->
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead">
+        <div class="inner">
+            <h3 class="masthead-brand"><a id="home" class="nav-link" href="/">Guild Master</a></h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <!-- Temporarily removed
+                <a id="home" class="nav-link" href="/">Home</a> -->
+
+                <a id="about" ng-show="!main.isLoggedIn" class="btn btn-outline-info" href="/about">About</a>
+                <!--ng-show is used below to control what the user sees -->
+                <a id="login" ng-show="!main.isLoggedIn" class="btn btn-outline-success resetForm" href="/login">Login</a>
+                <a id="register" ng-show="!main.isLoggedIn" class="btn btn-outline-primary resetForm" href="/register">Register</a>
+                <a id="logout" ng-show="main.isLoggedIn" class="btn btn-outline-primary resetForm" href="/logout" ng-click="main.logout()">Logout</a>
+                <!-- Temporarily removed - may be embedded into about section
+                class="btn btn-lg btn-secondary"
+                <a id="contact" class="nav-link" href="/contact">Contact</a> -->
+            </nav>
+        </div>
+        <br><br>
+        <div class="inner" ng-show="main.isLoggedIn">
+            <nav class="nav logNav">
+                <a id="mymarketplace" class="logBtn btn btn-info resetForm" href="/myMarketplace">Marketplace</a>
+                <a id="myguild" class="logBtn btn btn-info resetForm" href="/myGuild">Inspect Guild</a>
+                <a id="myheroes" class="logBtn btn btn-info resetForm" href="/myHeroes">Inspect Heroes</a>
+                <a id="battlemap" class="logBtn btn btn-info resetForm" href="/battleMap">Battle Map</a>
+                <a id="leaderboard" class="logBtn btn btn-info resetForm" href="/leaderboard">Leaderboard</a>
+                <a id="myaccount" class="logBtn btn btn-info resetForm" href="/myAccount">{{main.username}}</a>
+            </nav>
+        </div>
+        <div id="guildState" class="inner" ng-show="main.isLoggedIn">
+            <table class="table table-bordered">
+                <tr>
+                    <th class="title">Guild Name</th>
+                    <td>{{main.guildname}}</td>
+                    <th class="title">Gold</th>
+                    <td id="indexPageG">{{main.gold}}</td>
+                </tr>
+            </table>
+        </div>
+    </header>
+
+    <main role="main" class="inner cover">
+        <!-- ng view allows injection of html pages through app routing system -->
+        <div ng-view></div>
+    </main>
+
+    <div id="chat" class="page-header parent panel-primary" ng-show="main.isLoggedIn">
+        <p id="chatUsername" hidden>{{main.username}}</p>
+        <div id="messages" class="panel">
+
+        </div>
+        <div id="textInputBox">
+            <form id="send-message" class="wrapElem">
+                <input class="elem1" type="text" id="message" autocomplete="off">
+                <input class="elem2" id="submit" type="submit">
+            </form>
+        </div>
+    </div>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+            <a href="/privacy" id="privacyPolicy">Privacy Policy</a>
+        </div>
+
+
+    </footer>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<script src="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css"></script>
+
+<!--
+https://code.jquery.com/jquery-1.12.4.js
+https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js
+https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css
+-->
+
+
+<!-- FontAwesome CDN -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+<!-- Custom Scripts -->
+<!--<script type="text/javascript" src="assets/js/navBar.js"></script>-->
+<!--<script type="text/javascript" src="assets/js/privacyPolicy.js"></script>-->
+
+<script type="text/javascript" src="assets/js/edit.js"></script>
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script type="text/javascript" src="assets/js/chat.js"></script>
+
+
+</body>
+</html>

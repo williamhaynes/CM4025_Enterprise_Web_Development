@@ -1,0 +1,72 @@
+<!--Currently file utilises placeholder divs and etc to display correct structure, will be modified -->
+<div class="page-header">
+    <h1 class="cover-heading">My Guild</h1>
+    <p class="lead">Here on the guild screen, you can inspect the state of your guild headquarters, improve your facilities and in turn improve the performance of your adventurers.</p>
+
+    <!-- Contains information on the current state of the guild -->
+    <div id="leftBar">
+        <div id="tableContainer">
+            <!--<img src="assets/characters/IMAGE_OF_A_THING.FILETYPE" alt="Image of " class="">-->
+            <table id="guildTable" class="table table-hover  table-responsive">
+                <thead>
+                    <tr>
+                        <th>Attack</th>
+                        <th>Defence</th>
+                        <th>Hit Points</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td><img data-ng-attr-id="ballistae" id="ballistae" src="assets/buildings/ballistae.jpg" alt="Image of a ballistae" class="guildBuilding" ng-click="guild.upgradeBuilding1(main.gold, main.username);"></td>
+                    <td><img data-ng-attr-id="tower" id="tower"  src="assets/buildings/tower.jpg" alt="Image of a tower" class="guildBuilding" ng-click="guild.upgradeBuilding2(main.gold, main.username);"></td>
+                    <td><img data-ng-attr-id="cow" id="cow"  src="assets/buildings/cow.jpg" alt="Image of a cow" class="guildBuilding" ng-click="guild.upgradeBuilding3(main.gold, main.username);"></td>
+                    <td><img data-ng-attr-id="painting" id="painting"  src="assets/buildings/painting.jpg" alt="Image of a painting" class="guildBuilding" ng-click="guild.upgradeBuilding4(main.gold, main.username);"></td>
+                </tr>
+                <tr>
+                    <td>Ballistae (+1 ATK)</td>
+                    <td>Tower (+1 DEF)</td>
+                    <td>Farmland (+1 HP)</td>
+                    <td>Painting (+1 Cost)</td>
+                </tr>
+                <tr>
+                    <td><img data-ng-attr-id="catapult" id="catapult" src="assets/buildings/catapult.jpg" alt="Image of a catapult" class="guildBuilding" ng-click="guild.upgradeBuilding5(main.gold, main.username);"></td>
+                    <td><img data-ng-attr-id="castle" id="castle" src="assets/buildings/castle.jpg" alt="Image of a castle" class="guildBuilding" ng-click="guild.upgradeBuilding6(main.gold, main.username);"></td>
+                    <td><img data-ng-attr-id="steading" id="steading" src="assets/buildings/steading.jpg" alt="Image of a steading" class="guildBuilding" ng-click="guild.upgradeBuilding7(main.gold, main.username);"></td>
+                    <td><img data-ng-attr-id="carriage" id="carriage" src="assets/buildings/carriage.jpg" alt="Image of a carriage" class="guildBuilding" ng-click="guild.upgradeBuilding8(main.gold, main.username);"></td>
+                </tr>
+                <tr>
+                    <td>Catapult (+15 ATK)</td>
+                    <td>Castle (+15 DEF)</td>
+                    <td>Steading (+15 HP)</td>
+                    <td>Carriage (+15 Cost)</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <!-- Event log -->
+    <div id="rightBar">
+
+    </div>
+    <!-- Contains possible upgrades for the guild -->
+    <div id="bottomBar">
+
+    </div>
+
+</div>
+
+<!--
+<div ng-include src="'app/views/pages/users/account/chat.html'" ng-controller="mainCtrl as main" ng-app="userApp"></div>-->
+<!--
+<div id="chat" class="page-header parent panel-primary">
+    <div id="messages">
+
+    </div>
+    <div>
+        <form id="send-message">
+            <input type="text" id="message" autocomplete="off">
+            <input id="submit" type="submit">
+        </form>
+    </div>
+</div>-->

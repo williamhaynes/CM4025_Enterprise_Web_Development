@@ -1,0 +1,79 @@
+<!--Currently file utilises placeholder divs and etc to display correct structure, will be modified -->
+<div class="">
+    <h1 class="cover-heading">The Marketplace</h1>
+    <p class="lead">Welcome to the Marketplace, here you can buy new Adventurers for your Guild, to bolster your forces</p>
+
+    <!-- Contains information on the current state of the guild -->
+    <div id="leftBar">
+        <div id="tableContainer">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Race</th>
+                    <th>ATK</th>
+                    <th>DEF</th>
+                    <th>HP</th>
+                    <th>Cost</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr id="{{$index}}" ng-repeat="adventurer in adventurers.marketplace" ng-click="adventurers.buyAdventurer(adventurer, main.gold, main.username);">
+                    <td><img src="assets/characters/{{adventurer.class}}.png" alt="Image of {{adventurer.class}}" class="characterImage"></td>
+                    <td>{{adventurer.name}}</td>
+                    <td>{{adventurer.class}}</td>
+                    <td>{{adventurer.race}}</td>
+                    <td>{{adventurer.atk}}</td>
+                    <td>{{adventurer.def}}</td>
+                    <td>{{adventurer.hp}}</td>
+                    <td>{{adventurer.cost}}</td>
+                    <td><i class="editButton fas fa-cart-plus fa-lg" data-toggle="modal" data-target="#adventurerModal"></i></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <!-- Event log -->
+    <div id="rightBar">
+
+    </div>
+    <!-- Contains possible upgrades for the guild -->
+    <div id="bottomBar">
+
+    </div>
+    <!--<div>
+        <p>{{main}}</p>
+        <p>{{marketplace}}</p>
+    </div>-->
+    <div id="adventurerModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div style="background-color:ghostwhite" class="modal-content">
+                <div class="modal-header">
+                    <h4 id="buyTitle" style="color:black" class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div>
+                    <!--this.updatePassword = function(updateData)
+                    <form id="purchaseForm" class="form-horizontal" ng-submit="adventurers.buyAdventurer(adventurers.marketplace[1]); ">
+                        <button id="submitPurchaseModal" class="btn btn-lg btn-primary" type="submit">Buy</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </form>-->
+                </div>
+            </div>
+        </div>
+    </div>
+<!--
+    <div id="helloThere">
+        <p>{{main}}</p>
+        <p>{{main.username}}</p>
+        <p>{{main.gold}}</p>
+        <p>{{adventurers}}</p>
+        <p>{{adventurers.purchaseData}}</p>
+        <p>{{adventurers.marketplace}}</p>
+    </div>
+    -->
+</div>

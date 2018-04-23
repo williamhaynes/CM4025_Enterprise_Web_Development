@@ -1,0 +1,36 @@
+<div class="page-header">User Registration</div>
+    <!--<h1 class="cover-heading">Login</h1>-->
+    <p class="lead">Guild Master is a text based Massively Multiplayer Online Role-Playing Game, where you manage your own guild of adventurers in search of fame and glory.</p>
+
+
+    <form id="registerForm" class="form-horizontal" ng-submit="register.regUser(regData);">
+        <label>Username:</label>
+        <input type="text" class="form-control"  name="username" value="" placeholder="Type your username here..." ng-model="register.regData.username" required="required"><br>
+        <label>Password:</label>
+        <input type="password" class="form-control" name="password" value="" placeholder="Type your password here..." ng-model="register.regData.password" required="required"><br>
+        <label>Confirm Password:</label>
+        <input type="password" class="form-control" name="confirmPassword" value="" placeholder="Confirm your password here..." ng-model="register.regData.confirmPassword" required="required"><br>
+        <label>Email:<br></label>
+        <input type="email" class="form-control" name="email" value="" placeholder="Type your email here..." ng-model="register.regData.email" required="required"><br>
+        <label>Confirm Email:<br></label>
+        <input type="email" class="form-control" name="confirmEmail" value="" placeholder="Confirm your email here..." ng-model="register.regData.confirmEmail" required="required"><br>
+        <br>
+        <button class="btn btn-lg btn-primary" type="submit">Register</button>
+        <div class="jumbotron text-center" ng-show="register.loading">
+            <span class="glyphicon glyphicon-repeat spinner"></span>
+            <p>Loading...</p>
+        </div>
+
+        <div class="text-center row show-hide-message" ng-show="register.successMsg">
+            <div id="successMessage" class="alert alert-success">{{ register.successMsg }}</div>
+        </div>
+        <br>
+        <div class="text-center row show-hide-message" ng-show="register.errorMsg">
+            <div id="errorMessage" class="alert alert-danger">{{ register.errorMsg }}</div>
+        </div>
+    </form>
+    <p class="lead">
+        <br>
+        In the wrong place? Maybe you want to: <br><br><a id="registerPageLoginButton" href="/login" class="btn btn-lg btn-success resetForm">Login</a>
+    </p>
+

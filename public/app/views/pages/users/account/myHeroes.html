@@ -1,0 +1,52 @@
+<!--Currently file utilises placeholder divs and etc to display correct structure, will be modified -->
+<div class="page-header">
+    <h1 class="cover-heading">My Heroes</h1>
+    <p class="lead">Here on the hero screen, you can inspect your adventurers current status. You can also choose to send them on adventures or sell them to the marketplace.</p>
+
+    <!-- Contains information on the current state of the guild -->
+    <div id="leftBar">
+        <div id="tableContainer">
+
+            <table id="heroTable" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Race</th>
+                    <th>ATK</th>
+                    <th>DEF</th>
+                    <th>HP</th>
+                    <th>Cost</th>
+                </tr>
+                </thead>
+                <!-- ng-repeat="x in adventurers"-->
+                <tr ng-repeat="adventurer in adventurers.adventurers" ng-click="adventurers.sellAdventurer(adventurer, main.gold, main.username);">
+                    <td><img src="assets/characters/{{adventurer.class}}.png" alt="Image of {{adventurer.class}}" class="characterImage"></td>
+                    <td>{{adventurer.name}}</td>
+                    <td>{{adventurer.class}}</td>
+                    <td>{{adventurer.race}}</td>
+                    <td>{{adventurer.atk}}</td>
+                    <td>{{adventurer.def}}</td>
+                    <td>{{adventurer.hp}}</td>
+                    <td>{{adventurer.cost}}</td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    <!-- Event log -->
+    <div id="rightBar">
+
+    </div>
+    <!-- Contains possible upgrades for the guild -->
+    <div id="bottomBar">
+
+    </div>
+    <div>
+        <!--<p>{{main}}</p>
+        <p>{{adventurers}}</p>
+        <p>{{adventurers.adventurers}}</p>-->
+    </div>
+
+</div>

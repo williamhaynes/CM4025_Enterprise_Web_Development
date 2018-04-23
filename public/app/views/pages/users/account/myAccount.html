@@ -1,0 +1,146 @@
+<div class="page-header">
+
+    <form id="myAccountDetails" class="">
+
+        <div class="form-group row">
+            <label for="myUsername" class="col-3 col-form-label">Username:</label>
+            <div class="col-8">
+                <input type="text" class="form-control" ng-value="main.username"  id="myUsername" value="" readonly>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <label for="myPassword" class="col-3 col-form-label">Password:</label>
+            <div class="col-8">
+                <input type="password" class="form-control" ng-value="expression" id="myPassword" value="" readonly>
+            </div>
+            <div>
+            <i class="editButton far fa-edit fa-2x" data-toggle="modal" data-target="#myModal"></i>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="myEmail" class="col-3 col-form-label">Contact Email:</label>
+            <div class="col-8">
+                <input type="email" class="form-control" ng-value="main.email" id="myEmail" value="" readonly>
+            </div>
+            <div id="editButtonContainer1" class="eButton">
+                <i id="emailEditButton" class="editButton far fa-edit fa-2x" data-toggle="modal" data-target="#myModal2"></i>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="myGuildName" class="col-3 col-form-label">Guild Name:</label>
+            <div class="col-8">
+                <input type="text" class="form-control" ng-value="main.guildname" id="myGuildName" value="" readonly>
+            </div>
+            <div id="editButtonContainer2" class="eButton">
+                <i class="editButton far fa-edit fa-2x" data-toggle="modal" data-target="#myModal3"></i>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+<!-- Modal 1  -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div style="background-color:ghostwhite" class="modal-content">
+            <div class="modal-header">
+                <h4 style="color:black" class="modal-title">Change Password</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color:black">To change your password, please type in your new password and confirm your new password</p>
+            </div>
+            <div>
+                <!--this.updatePassword = function(updateData)-->
+                <form id="updateForm" class="form-horizontal" ng-submit="main.updUser1(updateData); $scope.$close()">
+                    <label style="color:black">New Password:</label>
+                    <input style="color:black;text-align:center !important;" type="password" class="form-control" name="newPassword" value="" placeholder="Type your new password here..." ng-model="main.updateData.newPassword" required="required"><br>
+                    <label style="color:black">Confirm New Password:</label>
+                    <input style="color:black;text-align:center !important;" type="password" class="form-control" name="confirmNewPassword" value="" placeholder="Confirm your new password here..." ng-model="main.updateData.confirmNewPassword" required="required"><br>
+                    <button id="submitModal" class="btn btn-lg btn-primary" type="submit">Update Password</button>
+                </form>
+            </div>
+            <div id="updateStatus" hidden>{{main.updated}}</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal 2  -->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div style="background-color:ghostwhite" class="modal-content">
+            <div class="modal-header">
+                <h4 style="color:black" class="modal-title">Change Email</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color:black">To change your email, please type in your new email and confirm your new email</p>
+            </div>
+            <div>
+                <!--this.updatePassword = function(updateData)-->
+                <form id="updateForm2" class="form-horizontal" ng-submit="main.updUser2(updateData); $scope.$close()">
+                    <label style="color:black">New Email:</label>
+                    <input style="color:black;text-align:center !important;" type="email" class="form-control" name="newEmail" value="" placeholder="Type your new email here..." ng-model="main.updateData.newEmail" required="required"><br>
+                    <label style="color:black">Confirm New Email:</label>
+                    <input style="color:black;text-align:center !important;" type="email" class="form-control" name="confirmNewEmail" value="" placeholder="Confirm your new email here..." ng-model="main.updateData.confirmNewEmail" required="required"><br>
+                    <button id="submitModal2" class="btn btn-lg btn-primary" type="submit">Update Email</button>
+                </form>
+            </div>
+            <div id="updateStatus2" hidden>{{main.updated}}</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal 2  -->
+<div id="myModal3" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div style="background-color:ghostwhite" class="modal-content">
+            <div class="modal-header">
+                <h4 style="color:black" class="modal-title">Change Guild Name</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="color:black">To change your Guild Name, please type in your new Guild Name and confirm your new Guild Name</p>
+            </div>
+            <div>
+                <!--this.updatePassword = function(updateData)-->
+                <form id="updateForm3" class="form-horizontal" ng-submit="main.updUser3(updateData); $scope.$close()">
+                    <label style="color:black">New Guild Name:</label>
+                    <input style="color:black;text-align:center !important;" type="text" class="form-control" name="newGuildName" value="" placeholder="Type your new Guild Name here..." ng-model="main.updateData.newGuildName" required="required"><br>
+                    <label style="color:black">Confirm New Guild Name:</label>
+                    <input style="color:black;text-align:center !important;" type="text" class="form-control" name="confirmNewGuildName" value="" placeholder="Confirm your new Guild Name here..." ng-model="main.updateData.confirmNewGuildName" required="required"><br>
+                    <button id="submitModal3" class="btn btn-lg btn-primary" type="submit">Update Guild Name</button>
+                </form>
+            </div>
+            <div id="updateStatus3" hidden>{{main.updated}}</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--
+<div id="helloThere">
+    <p>{{main}}</p>
+
+    <p>{{updateData}}</p>
+</div>
+-->

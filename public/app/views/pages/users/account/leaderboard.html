@@ -1,0 +1,33 @@
+<!--Currently file utilises placeholder divs and etc to display correct structure, will be modified -->
+<div class="page-header">
+    <h1 class="cover-heading">Leaderboard</h1>
+    <p class="lead">Welcome to the Leaderboard - The worlds mightiest heroes</p>
+
+    <!-- Contains information on the current state of the guild -->
+    <div id="leftBar">
+        <table id="leaderBoardTable" class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Owner</th>
+                    <th>Hero</th>
+                    <th>Power</th>
+                </tr>
+            </thead>
+            <!-- ng-repeat="x in adventurers"-->
+                <tr ng-repeat="guild in leaderboard.leaderboard" id="{{guild.heroScore}}">
+                    <td>{{guild.owner}}</td>
+                    <td>{{guild.name}}</td>
+                    <td>{{guild.heroScore}}</td>
+                </tr>
+        </table>
+    </div>
+    <!-- Event log -->
+    <div id="rightBar">
+
+    </div>
+    <!-- Contains possible upgrades for the guild -->
+    <div id="bottomBar">
+
+    </div>
+
+</div>

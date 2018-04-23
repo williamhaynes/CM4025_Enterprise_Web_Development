@@ -1,0 +1,79 @@
+<!-- User managament page for administrators-->
+<div class="page-header">
+    <h1 class="cover-heading">User Management</h1>
+    <div id="tableContainer">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Username</th>
+                    <th>Email Address</th>
+                    <th>Guild Name</th>
+                    <th>Number of Adventurers</th>
+                    <th>Gold</th>
+                    <th>Adventurers Modal</th>
+                    <th>Guild Modal</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="x in records">
+                <td>{{x.id}}</td>
+                <td>{{x.username}}</td>
+                <td>{{x.email}}</td>
+                <td>{{x.guildname}}</td>
+                <td>{{x.numberofadventurers}}</td>
+                <td>{{x.gold}}</td>
+                <td><button>Adventurer Details</button></td>
+                <td><button>Guild Details</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!--
+Design Idea
+
+Table of users (passwords omitted)
+Ability to send a user a message from the administrator
+Ability to delete a user
+Ability to ban a user for a set period of time
+Ability to access adventurers modal to look at all that users adventurers
+Ability to access guild modal to look at all that users guild details
+-->
+
+<!--
+Example of how this may be tackled
+
+<body ng-app="myApp">
+
+<table ng-controller="myCtrl" border="1">
+    <tr ng-repeat="x in records">
+        <td>{{x.Name}}</td>
+        <td>{{x.Country}}</td>
+    </tr>
+</table>
+
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function($scope) {
+        $scope.records = [
+            {
+                "Name" : "Alfreds Futterkiste",
+                "Country" : "Germany"
+            },
+            {
+                "Name" : "Berglunds snabbköp",
+                "Country" : "Sweden"
+            },
+            {
+                "Name" : "Centro comercial Moctezuma",
+                "Country" : "Mexico"
+            },
+            {
+                "Name" : "Ernst Handel",
+                "Country" : "Austria"
+            }
+        ]
+    });
+</script>
+-->
