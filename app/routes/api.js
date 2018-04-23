@@ -821,8 +821,9 @@ module.exports = function(router) {                  //adding "router" here mean
         query6 = { owner: { $ne: marketplace } };
 
         Adventurer.find(query6, function(req, adventurers){
-            var heroScore = 0;
+
             for(j in adventurers) {
+                var heroScore = 0;
                 heroScore += (adventurers[j].atk + adventurers[j].def + adventurers[j].hp + adventurers[j].cost);
                 ownersAndScores[adventurers[j].name] = { "name": adventurers[j].name, "heroScore": heroScore, "owner": adventurers[j].owner};
                 //console.log(adventurers[j].name + ": " + heroScore + ", Owner: " + adventurers[j].owner);
